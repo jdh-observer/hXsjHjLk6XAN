@@ -1,1 +1,9 @@
 jupyterlab-citation-manager==1.0.0
+pandas>=2.0 # for data tables
+matplotlib==3.10.8 # for plot graph
+
+Pillow>=10.0 # for image display
+capstone>=5.0 # for disassembly
+ipywidgets>=8.1.1 # for interactive widgets
+jupyterlab_widgets==3.0.16 # for interactive widgets
+# TODO: Maybe do we need to do jupyter nbextension enable --py widgetsnbextension?
