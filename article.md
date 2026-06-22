@@ -269,7 +269,7 @@ As <cite id="35edf"><a href="#zotero%7C23690838%2FTAS4LDM9">(Nida, 1964)</a></ci
 Because of this, it is common to invoke a memory manager application which will reorganise the pointers in the code. In our example, we were able to use empty space at the end of the ROM file to store our strings, as well as re-using the allocated memory from the existing Japanese strings. This increases the flexibility of translators, but does not entirely eliminate it, for there remain two distinct constraints: The unallocated ROM size and the visual space given to the text. 
 <!-- #endregion -->
 
-```python jdh={"module": "object", "object": {"source": ["Missing title"], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-overwriting-*"]
+```python jdh={"module": "object", "object": {"source": ["An example of how overfilling strings cannot work without modifying the associated pointers."], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-overwriting-*"]
 import html
 import ipywidgets as widgets
 from IPython.display import display, HTML
@@ -592,7 +592,7 @@ While our ROM analysis successfully identified much of the *Chobits* sprite data
 Corruption mapping (a.k.a. Pattern Injection) is a technique we used throughout the investigation of this GBA title. By "corrupting" a region of memory with a known value (e.g. 0xFF), we can visually correlate that change with their on-screen manifestations. For example, a tile may disappear, or audio might corrupt. This technique requires a careful approach and rough knowledge of the asset layout in the ROM as corrupting a code section may cause unexpected behavior including misleading visual glitches.
 <!-- #endregion -->
 
-```python jdh={"module": "object", "object": {"source": ["Missing title"], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-spriteview-*"]
+```python jdh={"module": "object", "object": {"source": ["View of sprites in memory under different layouts ({label})."], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-spriteview-*"]
 from PIL import Image as PILImage, ImageDraw as PILImageDraw
 from IPython.display import display
 import os
@@ -821,7 +821,7 @@ Video was often performed with bespoke compression codecs, though later GBA titl
 In the [figure below](#figure-decomposition), we show a single frame of the intro video and its component parts. Note that there is no consistent sprite shape, some of the sprites are very small (such as sprite 18) and would be difficult to identify visually while searching through the ROM. Practically, targetted changes such as a change to the text in the title of the video may be possible, but requires significant work, unless a frame is stored entirely in a background tilemap, and is luckily continguous in memory. Modifications to animated text or to other moving parts of the video are significantly more complex. Note, as well, that the number of sprites, their placement onscreen and their size in memory (especially for compressed images) are all hard-set, meaning that even ideal scenarios involving sprites are complex.
 <!-- #endregion -->
 
-```python jdh={"module": "object", "object": {"source": ["Missing title"], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-decomposition-*"]
+```python jdh={"module": "object", "object": {"source": ["HBox(children=(VBox(children=(VBox(children=(Label(value='Main Layers:'), Checkbox(value=True, description='UI\u2026"], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-decomposition-*"]
 import ipywidgets as widgets
 from IPython.display import display
 from PIL import Image
@@ -970,7 +970,7 @@ Aside from the technical reasons for one to pass over the video and audio transl
 Usually a fan translation of a GBA game would not require any changes to the machine's assembly code, but having the ability to change it can give further flexibility to the translators. For example, the *Chobits* game text can be paged, only displaying a portion of text between the player pressing a button. This can either be due to long text strings, or for stylistic effect. This could be implemented in a dynamic way (e.g. creating a new page whenever a specific page-break character is read within a large string) or a static way (a hard-coded set of pages with separate strings), as shown visually in [the Figure on Paging methods](#figure-paging). A static approach will constrain the translator to that static number of pages, whereas a dynamic approach will allow for more pages of text. 
 <!-- #endregion -->
 
-```python jdh={"module": "object", "object": {"source": ["Missing title"], "type": "image"}} editable=true raw_mimetype="" slideshow={"slide_type": ""} tags=["figure-paging-*"]
+```python jdh={"module": "object", "object": {"source": ["Dynamic Paging - Printing"], "type": "image"}} editable=true raw_mimetype="" slideshow={"slide_type": ""} tags=["figure-paging-*"]
 def static_print(msg):
     msg = msg[:31] # Clip message to emulate screen limitations
     print(msg)
