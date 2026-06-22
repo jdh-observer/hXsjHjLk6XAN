@@ -1217,7 +1217,7 @@ Many game UI components in the *Chobits* game were rendered as graphical assets.
 
 Other aspects of the translation process are often too cumbersome to implement unless a translator is particularly motivated, skilled and patient. Video and Audio replacement requires much more than simple data swapping. It requires videography and audiography skills, bit-rate re-encoding, timing reconciliation, compression knowledge to name some technical limits, not to mention voice acting talent. The technical process of decompilation of the codebase is possible with modern tooling, but interpretting the generated source is still a gargantuan effort. Realistically, the effort required is disproportionate to the payoff of simply longer translation strings. However, if a project aim is to add additional functionality to a game, above language replacement, this would be an essential requirement.
 
-<!-- #region jdh={"module": "object", "object": {"source": "Matrix of Difficulty / Impact of implementing different features", "type": "table"}, "editable": true} slideshow={"slide_type": ""} tags=["table-matrix-*"] -->
+<!-- #region jdh={"module": "object", "object": {"source": ["Matrix of Difficulty / Impact of implementing different features"], "type": "table"}, "editable": true} slideshow={"slide_type": ""} tags=["table-matrix-*"] -->
 |  | Low Impact | Medium Impact | High Impact |
 |----------------------|------------|---------------|-------------|
 | **High Difficulty**     | Video & Audio Replacement   | Dynamic Page Management | Reverse Engineering Propietary Compression |
