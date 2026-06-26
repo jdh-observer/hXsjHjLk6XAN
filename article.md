@@ -169,7 +169,7 @@ As a work derived from a manga title, the fanslation of *Chobits* mirrors the ef
 As noted in the [Introduction](#anchor-introduction), existing academic work is predominantly concerned with these interesting legal and cultural scenarios, rather than the technical process of translation. As a visual novel, *Chobits* is a title with a lot of textual and visual content, which can be difficult to fit within the limited confines of the GBA device. Its translation is crucial to the accessibility of the media, unlike other titles, where the enjoyment stems from active gameplay mechanics (like platformers) which one can reasonably enjoy without translation. Unlike anime or manga translation, which requires translation skills and some level of competency with image editing and subtitling software, translating this game perfectly would require an advanced programming skillset with an ability to reverse engineer and understand embedded devices. This high barrier to entry has likely limited the number of complete fanslations released each year. In [the Figure below](#figure-releases), a timeline of final releases of GBA games is shown, gathered from the romhacking.net community. The increase in releases from 2019 to 2022 coincides with COVID-19 movement restrictions, which likely contributed to increased participation in home-based hobbies, such as GBA fanslation.
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-releases-*"]
+```python jdh={"module": "object", "object": {"source": ["GBA Fan Translation Releases 2002\u20132025 (data from romhacking.net)"], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-releases-*"]
 import csv
 from pathlib import Path
 
@@ -781,7 +781,7 @@ In lieu of these assets, we performed a comparative analysis on another visual n
 After locating the tile images, we performed the same extraction-modification-reinsertion procedure as before, and when we reloaded the game, the modified image appeared — as shown in [the figure below](#figure-comparelogo). Disregarding the quality of the replacement artwork compared to the original and focussing on the process, there are several barriers to taking advantage of modern artwork software. As mentioned before, palettes are not stored contiguously in the memory to the sprite tiles, but are loaded at runtime, which will often require an artist to rebuild the palettes manually. Indexed images limited to sixteen colours are not supported in all modern image editing software, or hide behind several menus of settings. If using multiple tools, artwork software can silently re-index the palette indices of the image, causing the palettes to apply incorrectly on re-import to the device. Many tools to help export sprites from the ROM do not support strided sprites and the availability of exporting LZ77 compressed images is variable. In our work, we created a custom script that extracted sprites at various layout configurations (for there is no metadata defining sprite layout) and, once edited, re-imported them. For sprites where we could not infer stride easily, we had to edit portions of the image separately and align them through manual pixel counting. We were not able to find a generic piece of community software that addresses all aspects of the sprite editing workflow sufficiently to avoid bespoke scripts such as our own.
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-comparelogo-*"]
+```python jdh={"module": "object", "object": {"source": ["Replacing the game title via sprite modification."], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-comparelogo-*"]
 from IPython.display import display, HTML
 
 meta = {
@@ -821,7 +821,7 @@ Video was often performed with bespoke compression codecs, though later GBA titl
 In the [figure below](#figure-decomposition), we show a single frame of the intro video and its component parts. Note that there is no consistent sprite shape, some of the sprites are very small (such as sprite 18) and would be difficult to identify visually while searching through the ROM. Practically, targetted changes such as a change to the text in the title of the video may be possible, but requires significant work, unless a frame is stored entirely in a background tilemap, and is luckily continguous in memory. Modifications to animated text or to other moving parts of the video are significantly more complex. Note, as well, that the number of sprites, their placement onscreen and their size in memory (especially for compressed images) are all hard-set, meaning that even ideal scenarios involving sprites are complex.
 <!-- #endregion -->
 
-```python editable=true jdh={"module": "object", "object": {"source": ["HBox(children=(VBox(children=(VBox(children=(Label(value='Main Layers:'), Checkbox(value=True, description='UI\u2026"], "type": "image"}} slideshow={"slide_type": ""} tags=["figure-decomposition-*"]
+```python jdh={"module": "object", "object": {"source": ["ADD LABEL"], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-decomposition-*"]
 import ipywidgets as widgets
 from IPython.display import display
 from PIL import Image
@@ -1017,7 +1017,7 @@ Some of these disassemblers also provide decompilation through a mixture of patt
 As previously mentioned, function and variable names are not recoverable, meaning that the purpose of these structures still require their behaviour to be analysed. Disassembly and decompilation tools typically assign autogenerated names through incrementing schemes independent of the game's logic (e.g. "func41", "var21"). These names provide no contextual information so investigation requires reasoning about the input, output, control flow and data access patterns of the program. We show this loss of information in a [code example below](#figure-decompile). While this example is for x86, the same principles apply to the GBA.
 <!-- #endregion -->
 
-```python editable=true jdh={"module": "object", "object": {"source": ["Missing title"], "type": "image"}} slideshow={"slide_type": ""} tags=["figure-compile-*"]
+```python jdh={"module": "object", "object": {"source": ["Missing title"], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-compile-*"]
 from capstone import *
 
 # Our original C Code looked something like this:
