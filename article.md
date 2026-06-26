@@ -1,11 +1,12 @@
 ---
 jupyter:
   jupytext:
+    formats: ipynb,md
     text_representation:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.19.3
+      jupytext_version: 1.19.4
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
@@ -268,7 +269,7 @@ As <cite id="35edf"><a href="#zotero%7C23690838%2FTAS4LDM9">(Nida, 1964)</a></ci
 Because of this, it is common to invoke a memory manager application which will reorganise the pointers in the code. In our example, we were able to use empty space at the end of the ROM file to store our strings, as well as re-using the allocated memory from the existing Japanese strings. This increases the flexibility of translators, but does not entirely eliminate it, for there remain two distinct constraints: The unallocated ROM size and the visual space given to the text. 
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-overwriting-*"]
+```python jdh={"module": "object", "object": {"source": ["An example of how overfilling strings cannot work without modifying the associated pointers."], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-overwriting-*"]
 import html
 import ipywidgets as widgets
 from IPython.display import display, HTML
@@ -591,7 +592,7 @@ While our ROM analysis successfully identified much of the *Chobits* sprite data
 Corruption mapping (a.k.a. Pattern Injection) is a technique we used throughout the investigation of this GBA title. By "corrupting" a region of memory with a known value (e.g. 0xFF), we can visually correlate that change with their on-screen manifestations. For example, a tile may disappear, or audio might corrupt. This technique requires a careful approach and rough knowledge of the asset layout in the ROM as corrupting a code section may cause unexpected behavior including misleading visual glitches.
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-spriteview-*"]
+```python jdh={"module": "object", "object": {"source": ["View of sprites in memory under different layouts ({label})."], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-spriteview-*"]
 from PIL import Image as PILImage, ImageDraw as PILImageDraw
 from IPython.display import display
 import os
@@ -820,7 +821,7 @@ Video was often performed with bespoke compression codecs, though later GBA titl
 In the [figure below](#figure-decomposition), we show a single frame of the intro video and its component parts. Note that there is no consistent sprite shape, some of the sprites are very small (such as sprite 18) and would be difficult to identify visually while searching through the ROM. Practically, targetted changes such as a change to the text in the title of the video may be possible, but requires significant work, unless a frame is stored entirely in a background tilemap, and is luckily continguous in memory. Modifications to animated text or to other moving parts of the video are significantly more complex. Note, as well, that the number of sprites, their placement onscreen and their size in memory (especially for compressed images) are all hard-set, meaning that even ideal scenarios involving sprites are complex.
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-decomposition-*"]
+```python jdh={"module": "object", "object": {"source": ["HBox(children=(VBox(children=(VBox(children=(Label(value='Main Layers:'), Checkbox(value=True, description='UI\u2026"], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-decomposition-*"]
 import ipywidgets as widgets
 from IPython.display import display
 from PIL import Image
@@ -921,7 +922,7 @@ There are a handful of community projects that make this process easier, such as
 
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-sappyscreenshot-*"]
+```python jdh={"module": "object", "object": {"source": ["Screenshot of an audio track during playback in Sappy 2006. It shows 10 audio tracks defined, their associated MIDI events, memory offsets and hardware channels."], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-sappyscreenshot-*"]
 from IPython.display import Image 
 metadata={
     "jdh": {
@@ -938,7 +939,7 @@ metadata={
 display(Image("media/sappy.jpg"), metadata=metadata)
 ```
 
-```python editable=true slideshow={"slide_type": ""} tags=["sound-track18-*"]
+```python jdh={"module": "object", "object": {"source": ["Example audio track extracted from ROM."], "type": "sound"}} editable=true slideshow={"slide_type": ""} tags=["sound-track18-*"]
 from IPython.display import Audio
 
 print("Example audio track extracted from ROM:")
@@ -969,7 +970,7 @@ Aside from the technical reasons for one to pass over the video and audio transl
 Usually a fan translation of a GBA game would not require any changes to the machine's assembly code, but having the ability to change it can give further flexibility to the translators. For example, the *Chobits* game text can be paged, only displaying a portion of text between the player pressing a button. This can either be due to long text strings, or for stylistic effect. This could be implemented in a dynamic way (e.g. creating a new page whenever a specific page-break character is read within a large string) or a static way (a hard-coded set of pages with separate strings), as shown visually in [the Figure on Paging methods](#figure-paging). A static approach will constrain the translator to that static number of pages, whereas a dynamic approach will allow for more pages of text. 
 <!-- #endregion -->
 
-```python editable=true raw_mimetype="" slideshow={"slide_type": ""} tags=["figure-paging-*"]
+```python jdh={"module": "object", "object": {"source": ["Dynamic Paging - Printing"], "type": "image"}} editable=true raw_mimetype="" slideshow={"slide_type": ""} tags=["figure-paging-*"]
 def static_print(msg):
     msg = msg[:31] # Clip message to emulate screen limitations
     print(msg)
@@ -1016,7 +1017,7 @@ Some of these disassemblers also provide decompilation through a mixture of patt
 As previously mentioned, function and variable names are not recoverable, meaning that the purpose of these structures still require their behaviour to be analysed. Disassembly and decompilation tools typically assign autogenerated names through incrementing schemes independent of the game's logic (e.g. "func41", "var21"). These names provide no contextual information so investigation requires reasoning about the input, output, control flow and data access patterns of the program. We show this loss of information in a [code example below](#figure-decompile). While this example is for x86, the same principles apply to the GBA.
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-compile-*"]
+```python jdh={"module": "object", "object": {"source": ["Missing title"], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-compile-*"]
 from capstone import *
 
 # Our original C Code looked something like this:
@@ -1073,7 +1074,7 @@ Understandably, most GBA ROM hacking development is performed on a PC using an e
 In the GBA era, anti-corruption techniques were relatively simple and rarely meaningfully obstructive, whereas modern consoles incorporate far more sophisticated methods for runtime integrity and piracy prevention, increasing the complexity of fan translation and modification. However, the game industry has grown such that multi-lingual releases are much more common practice. In <cite id="lb5ui"><a href="#zotero%7C23690838%2FZCAKKSTJ">(Dranch, 2019)</a></cite>, they provide details about the languages that the games from the top 1000 best-selling titles on the Steam platform have been released in. Almost all games have an English translation, followed by roughly 70\% of the FIGS languages (French, Italian, German, Spanish), significantly higher than the rates on the GBA as seen in [the Figure below](#figure-langcompare). The article points out that the Asian markets are now potentially underserved at only approximately 30\% of games with translations available. Interestingly this is not too different from the GBA figures, but the market in China has significantly improved. While it may seem that the need for fan translation may be relatively reduced, the absolute number of titles available today are magnitudes higher.
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-langcompare-*"]
+```python jdh={"module": "object", "object": {"source": ["Missing title"], "type": "image"}} editable=true slideshow={"slide_type": ""} tags=["figure-langcompare-*"]
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -1216,7 +1217,7 @@ Many game UI components in the *Chobits* game were rendered as graphical assets.
 
 Other aspects of the translation process are often too cumbersome to implement unless a translator is particularly motivated, skilled and patient. Video and Audio replacement requires much more than simple data swapping. It requires videography and audiography skills, bit-rate re-encoding, timing reconciliation, compression knowledge to name some technical limits, not to mention voice acting talent. The technical process of decompilation of the codebase is possible with modern tooling, but interpretting the generated source is still a gargantuan effort. Realistically, the effort required is disproportionate to the payoff of simply longer translation strings. However, if a project aim is to add additional functionality to a game, above language replacement, this would be an essential requirement.
 
-<!-- #region editable=true jdh={"module": "object", "object": {"source": "Matrix of Difficulty / Impact of implementing different features", "type": "table"}} slideshow={"slide_type": ""} tags=["table-matrix-*"] -->
+<!-- #region jdh={"module": "object", "object": {"source": ["Matrix of Difficulty / Impact of implementing different features"], "type": "table"}, "editable": true} slideshow={"slide_type": ""} tags=["table-matrix-*"] -->
 |  | Low Impact | Medium Impact | High Impact |
 |----------------------|------------|---------------|-------------|
 | **High Difficulty**     | Video & Audio Replacement   | Dynamic Page Management | Reverse Engineering Propietary Compression |
