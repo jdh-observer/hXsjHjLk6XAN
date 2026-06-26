@@ -820,7 +820,7 @@ Video was often performed with bespoke compression codecs, though later GBA titl
 In the [figure below](#figure-decomposition), we show a single frame of the intro video and its component parts. Note that there is no consistent sprite shape, some of the sprites are very small (such as sprite 18) and would be difficult to identify visually while searching through the ROM. Practically, targetted changes such as a change to the text in the title of the video may be possible, but requires significant work, unless a frame is stored entirely in a background tilemap, and is luckily continguous in memory. Modifications to animated text or to other moving parts of the video are significantly more complex. Note, as well, that the number of sprites, their placement onscreen and their size in memory (especially for compressed images) are all hard-set, meaning that even ideal scenarios involving sprites are complex.
 <!-- #endregion -->
 
-```python editable=true jdh={"module": "object", "object": {"source": ["ADD LABEL"], "type": "image"}} slideshow={"slide_type": ""} tags=["figure-decomposition-*"]
+```python editable=true jdh={"module": "object", "object": {"source": ["ADD LABEL"], "type": "image"}} slideshow={"slide_type": ""}
 import ipywidgets as widgets
 from IPython.display import display
 from PIL import Image
@@ -901,9 +901,24 @@ sprite_box = widgets.VBox(
     [widgets.Label("Sprite Fragments:")] + list(sprite_widgets.values()),
     layout=widgets.Layout(height='350px', overflow_y='scroll', border='1px solid gray', padding='5px')
 )
-
 # Arrange: Left Panel (Controls) | Right Panel (The Image)
 display(widgets.HBox([widgets.VBox([bg_box, sprite_box]), out]))
+```
+
+```python
+from IPython.display import Image 
+metadata={
+    "jdh": {
+        "module": "object",
+        "object": {
+            "type":"image",
+            "source": [
+                "Placeholder: Label to Add"
+            ]
+        }
+    }
+}
+display(Image("media/figure-decomposition.png"), metadata=metadata)
 ```
 
 <!-- #region editable=true slideshow={"slide_type": ""} tags=["hermeneutics"] -->
