@@ -817,7 +817,7 @@ Most fan translation efforts stop at text and image translation as this covers t
 <!-- #region citation-manager={"citations": {"lirkd": [{"id": "23690838/44B6EBPF", "source": "zotero"}]}} editable=true slideshow={"slide_type": ""} -->
 Video was often performed with bespoke compression codecs, though later GBA titles often used the proprietary Mobiclip format by Actimagine<cite id="lirkd"><a href="#zotero%7C23690838%2F44B6EBPF">(Actimagine, 2006)</a></cite>. The complexity of decoding these is much higher than that of text or image data, and it also suffers from the compression problem mentioned earlier — where translating the media can inflate the file size, making it overflow the original allocations. Using mGBA's debugging facilities to observe the live changes to the system reveals that the video frames are actually hybrid combinations of background tilemaps and sprite overlays. Together, it can be clear to see where each sprite and background is displayed, but individually they can be difficult to identify.
 
-In the [figure below](#figure-decomposition), we show a single frame of the intro video and its component parts. Note that there is no consistent sprite shape, some of the sprites are very small (such as sprite 18) and would be difficult to identify visually while searching through the ROM. Practically, targetted changes such as a change to the text in the title of the video may be possible, but requires significant work, unless a frame is stored entirely in a background tilemap, and is luckily continguous in memory. Modifications to animated text or to other moving parts of the video are significantly more complex. Note, as well, that the number of sprites, their placement onscreen and their size in memory (especially for compressed images) are all hard-set, meaning that even ideal scenarios involving sprites are complex.
+In the [figure below](#anchor-figure-decomposition), we show a single frame of the intro video and its component parts. Note that there is no consistent sprite shape, some of the sprites are very small (such as sprite 18) and would be difficult to identify visually while searching through the ROM. Practically, targetted changes such as a change to the text in the title of the video may be possible, but requires significant work, unless a frame is stored entirely in a background tilemap, and is luckily continguous in memory. Modifications to animated text or to other moving parts of the video are significantly more complex. Note, as well, that the number of sprites, their placement onscreen and their size in memory (especially for compressed images) are all hard-set, meaning that even ideal scenarios involving sprites are complex.
 <!-- #endregion -->
 
 ```python editable=true jdh={"module": "object", "object": {"source": ["ADD LABEL"], "type": "image"}} slideshow={"slide_type": ""}
@@ -905,7 +905,7 @@ sprite_box = widgets.VBox(
 display(widgets.HBox([widgets.VBox([bg_box, sprite_box]), out]))
 ```
 
-```python
+```python tags=["figure-decomposition-*"]
 from IPython.display import Image 
 metadata={
     "jdh": {
