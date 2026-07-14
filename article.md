@@ -780,32 +780,27 @@ In lieu of these assets, we performed a comparative analysis on another visual n
 After locating the tile images, we performed the same extraction-modification-reinsertion procedure as before, and when we reloaded the game, the modified image appeared — as shown in [the figure below](#figure-comparelogo). Disregarding the quality of the replacement artwork compared to the original and focussing on the process, there are several barriers to taking advantage of modern artwork software. As mentioned before, palettes are not stored contiguously in the memory to the sprite tiles, but are loaded at runtime, which will often require an artist to rebuild the palettes manually. Indexed images limited to sixteen colours are not supported in all modern image editing software, or hide behind several menus of settings. If using multiple tools, artwork software can silently re-index the palette indices of the image, causing the palettes to apply incorrectly on re-import to the device. Many tools to help export sprites from the ROM do not support strided sprites and the availability of exporting LZ77 compressed images is variable. In our work, we created a custom script that extracted sprites at various layout configurations (for there is no metadata defining sprite layout) and, once edited, re-imported them. For sprites where we could not infer stride easily, we had to edit portions of the image separately and align them through manual pixel counting. We were not able to find a generic piece of community software that addresses all aspects of the sprite editing workflow sufficiently to avoid bespoke scripts such as our own.
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-comparelogo-*"]
-from IPython.display import display, HTML
+```python editable=true jdh={"module": "object", "object": {"source": ["Replacing the game title via sprite modification."], "type": "image"}} slideshow={"slide_type": ""} tags=["figure-comparelogo-*"]
+from IPython.display import display
+from PIL import Image
+import matplotlib.pyplot as plt
+import numpy as np
 
-meta = {
-    "jdh": {
-        "module": "object",
-        "object": {
-            "type": "image",
-            "source": ["Replacing the game title via sprite modification."]
-        }
-    }
-}
+from glob import glob
 
-# side-by-side layout using HTML table
-display(HTML(f"""
-<div style="display: flex; justify-content: center; align-items: center;">
-    <div style="margin: 5px;">
-        <img src="media/love_hina_logo_original.png" width="450">
-        <p style="text-align: center;">Original</p>
-    </div>
-    <div style="margin: 5px;">
-        <img src="media/love_hina_logo_new.png" width="450">
-        <p style="text-align: center;">Translated</p>
-    </div>
-</div>
-"""), metadata=meta)
+image_paths = ["media/love_hina_logo_original.png", "media/love_hina_logo_new.png"]
+labels = ["Original", "Translated"]
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+for i, ax in enumerate(axes):
+    img = Image.open(image_paths[i]).convert("RGBA")
+    img_array = np.array(img)
+    ax.imshow(img_array)
+    ax.set_title(labels[i])
+    ax.axis("off")
+
+plt.tight_layout()
+plt.show()
 ```
 
 ### Video/Audio Translation
@@ -1310,32 +1305,27 @@ In addition to ROM modification, recent advancements in Optical Character Recogn
 While these tools offer immediate translation, they suffer from the same contextual isolation issues that a blind machine-translation of a game's script would, as well as the OCR technology as another potentional source of errors. However, recent benchmarks of OCR accuracy have undergone significant iterative improvement (Comprehensive evaluations in 2025 showed that average OCR accuracy for printed text has reached 98.5\%–99.5\%, up from roughly 95\% in 2020 <cite id="x1pcg"><a href="#zotero%7C23690838%2FXM6IZVF2">(Sparkco AI, 2025)</a></cite>) and suggest that the gap between manually patched games and automated overlays may narrow, though lack of access to the internal state of the game  remains a limitation. In the Figure below, we show a screenshot of the RetroArch tool as applied to a scene in the game "Shin Megami Tensei — Devil Summoner" for the Sega Saturn platform. The original text reads "わたしにも、何か頼んでよ。 自分でたのめば? オレンジジュースにする?". While the machine translation has understood the literal meaning of the words, it has missed the social context of the scene (The character Kumiko has just arrived at the bar to meet the protagonist) and the sentences are disjoint. A better translation might be "Would you order something for me too? Orange Juice?"
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""} tags=["figure-nyarly-*"]
-from IPython.display import display, HTML
+```python editable=true jdh={"module": "object", "object": {"source": ["Screenshots from user Nyarly's 'How to Play Most Japanese Megami Tensei Games in English with Machine Translations' on YouTube."], "type": "image"}} slideshow={"slide_type": ""} tags=["figure-nyarly-*"]
+from IPython.display import display
+from PIL import Image
+import matplotlib.pyplot as plt
+import numpy as np
 
-meta = {
-    "jdh": {
-        "module": "object",
-        "object": {
-            "type": "image",
-            "source": ["Screenshots from user Nyarly's 'How to Play Most Japanese Megami Tensei Games in English with Machine Translations' on YouTube."]
-            # https://www.youtube.com/watch?v=oGNdDLla8QY
-        }
-    }
-}
+from glob import glob
 
-display(HTML(f"""
-<div style="display: flex; justify-content: center; align-items: center;">
-    <div style="margin: 5px;">
-        <img src="media/retroarch_original.png" width="400">
-        <p style="text-align: center;">Original</p>
-    </div>
-    <div style="margin: 5px;">
-        <img src="media/retroarch_translation.png" width="400">
-        <p style="text-align: center;">Translated</p>
-    </div>
-</div>
-"""), metadata=meta)
+image_paths = ["media/retroarch_original.png", "media/retroarch_translation.png"]
+labels = ["Original", "Translated"]
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+for i, ax in enumerate(axes):
+    img = Image.open(image_paths[i]).convert("RGBA")
+    img_array = np.array(img)
+    ax.imshow(img_array)
+    ax.set_title(labels[i])
+    ax.axis("off")
+
+plt.tight_layout()
+plt.show()
 ```
 
 ## Conclusion
