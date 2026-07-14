@@ -936,7 +936,7 @@ There are a handful of community projects that make this process easier, such as
 
 <!-- #endregion -->
 
-```python editable=true  slideshow={"slide_type": ""} tags=["figure-sappyscreenshot-*"]
+```python editable=true slideshow={"slide_type": ""} tags=["figure-sappyscreenshot-*"]
 from IPython.display import Image 
 metadata={
     "jdh": {
