@@ -8,7 +8,7 @@ jupyter:
       format_version: '1.3'
       jupytext_version: 1.19.4
   kernelspec:
-    display_name: base
+    display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
@@ -121,7 +121,7 @@ metadata={
         }
     }
 }
-display(Image("media/bootleg.png", width=500), metadata=metadata)
+display(Image("media/bootleg.png"), metadata=metadata)
 ```
 
 <!-- #region citation-manager={"citations": {"3gnbi": [{"id": "23690838/NNZKYJRK", "source": "zotero"}], "ad9g5": [{"id": "23690838/PT72WSJN", "source": "zotero"}], "vgofj": [{"id": "23690838/7PTYDRD9", "source": "zotero"}]}} editable=true slideshow={"slide_type": ""} -->
@@ -154,7 +154,7 @@ metadata={
     }
 }
 # Image reproduced with express permission from hit-japan (eBay).
-display(Image("media/gba-package.png", width=500), metadata=metadata)
+display(Image("media/gba-package.png"), metadata=metadata)
 ```
 
 <!-- #region citation-manager={"citations": {"47fsj": [{"id": "23690838/Y9U3PLH6", "source": "zotero"}], "uo4vh": [{"id": "23690838/SJ4VI5L8", "source": "zotero"}]}} editable=true slideshow={"slide_type": ""} -->
@@ -694,7 +694,7 @@ for label, params in configs.items():
                 }
             }
         }
-        display(img)
+        display(img, metadata=meta)
     else:
         print("Failed to generate image. Check dimensions.")
 ```
@@ -703,7 +703,7 @@ for label, params in configs.items():
 In the code above, we have taken a snapshot of the GBA ROM memory from YY-CHR and view it in different layouts to understand the sprite dimensionality. In the first output image, which is the YY-CHR default view, it is clear there are some images of interest present. By experimenting with various sprite sizes, offsets and strides, we can decypher the original images. We present three different configurations in this example — a NPC face, a pointing finger and a piece of UI text. You may wish to experiment and see if you can reconstruct the speech bubble sprite that is also present.
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""}
+```python editable=true slideshow={"slide_type": ""} tags=["figure-random-*"]
 from PIL import Image as PILImage
 from IPython.display import display
 import random
@@ -955,8 +955,6 @@ display(Image("media/sappy.jpg"), metadata=metadata)
 
 ```python editable=true jdh={"module": "object", "object": {"source": ["Example audio track extracted from ROM."], "type": "sound"}} slideshow={"slide_type": ""} tags=["sound-track18-*"]
 from IPython.display import Audio
-
-print("Example audio track extracted from ROM:")
 Audio("media/song0018.mp3")
 ```
 
@@ -1312,7 +1310,7 @@ In addition to ROM modification, recent advancements in Optical Character Recogn
 While these tools offer immediate translation, they suffer from the same contextual isolation issues that a blind machine-translation of a game's script would, as well as the OCR technology as another potentional source of errors. However, recent benchmarks of OCR accuracy have undergone significant iterative improvement (Comprehensive evaluations in 2025 showed that average OCR accuracy for printed text has reached 98.5\%–99.5\%, up from roughly 95\% in 2020 <cite id="x1pcg"><a href="#zotero%7C23690838%2FXM6IZVF2">(Sparkco AI, 2025)</a></cite>) and suggest that the gap between manually patched games and automated overlays may narrow, though lack of access to the internal state of the game  remains a limitation. In the Figure below, we show a screenshot of the RetroArch tool as applied to a scene in the game "Shin Megami Tensei — Devil Summoner" for the Sega Saturn platform. The original text reads "わたしにも、何か頼んでよ。 自分でたのめば? オレンジジュースにする?". While the machine translation has understood the literal meaning of the words, it has missed the social context of the scene (The character Kumiko has just arrived at the bar to meet the protagonist) and the sentences are disjoint. A better translation might be "Would you order something for me too? Orange Juice?"
 <!-- #endregion -->
 
-```python editable=true slideshow={"slide_type": ""}
+```python editable=true slideshow={"slide_type": ""} tags=["figure-nyarly-*"]
 from IPython.display import display, HTML
 
 meta = {
