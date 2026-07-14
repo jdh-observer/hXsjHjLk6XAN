@@ -936,7 +936,7 @@ There are a handful of community projects that make this process easier, such as
 
 <!-- #endregion -->
 
-```python editable=true jdh={"module": "object", "object": {"source": ["Screenshot of an audio track during playback in Sappy 2006. It shows 10 audio tracks defined, their associated MIDI events, memory offsets and hardware channels."], "type": "image"}} slideshow={"slide_type": ""} tags=["figure-sappyscreenshot-*"]
+```python editable=true  slideshow={"slide_type": ""} tags=["figure-sappyscreenshot-*"]
 from IPython.display import Image 
 metadata={
     "jdh": {
